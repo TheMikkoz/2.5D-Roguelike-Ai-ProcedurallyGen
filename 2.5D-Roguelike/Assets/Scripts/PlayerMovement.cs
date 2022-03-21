@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask ground;
 
     private CharacterController controller;
-
-    private bool isGrounded;
     private float gravity = 0;
 
     private void Start()
