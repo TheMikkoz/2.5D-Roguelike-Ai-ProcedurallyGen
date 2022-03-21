@@ -7,7 +7,7 @@ public class SergeiTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Oh no");
+        Debug.Log("Oh yes");
     }
 
     // Update is called once per frame
