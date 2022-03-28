@@ -12,6 +12,6 @@ public class CameraMovement : MonoBehaviour
     void FixedUpdate()
     {
         transform.LookAt(target.transform.position);
-        transform.position = Vector3.Lerp(transform.position, target.transform.position + offset, duration);
+        transform.position = Vector3.Lerp(transform.position, target.transform.position + offset - target.transform.forward * 10, duration);
     }
 }
