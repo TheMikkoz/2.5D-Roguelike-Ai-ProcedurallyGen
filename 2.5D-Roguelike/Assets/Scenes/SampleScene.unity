@@ -239,6 +239,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  Degree: 45
 --- !u!143 &73017780
 CharacterController:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.3523022, g: 1, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -617,10 +618,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7198b25ce8167af499a56995dd79bdd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 100
+  size: 2
   plrPos: {fileID: 73017778}
   groundPrefab: {fileID: 8899243053465278511, guid: 15dcf151394edc941933cb52246c91d2, type: 3}
-  WallPrefab: {fileID: 9064509979381140212, guid: dacf9e55c148c0f488274c7dfb85b06a, type: 3}
+  Prefab:
+  - {fileID: 9064509979381140212, guid: dacf9e55c148c0f488274c7dfb85b06a, type: 3}
+  - {fileID: 9064509979381140212, guid: 3a8fcad3fa6c461488162672825a3048, type: 3}
+  - {fileID: 9064509979381140212, guid: 3a8fcad3fa6c461488162672825a3048, type: 3}
+  - {fileID: 9064509979381140212, guid: 3a8fcad3fa6c461488162672825a3048, type: 3}
 --- !u!4 &1536251832
 Transform:
   m_ObjectHideFlags: 0

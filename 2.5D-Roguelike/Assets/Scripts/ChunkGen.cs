@@ -7,7 +7,7 @@ public class ChunkGen : MonoBehaviour
     [SerializeField] int size;
     [SerializeField] Transform plrPos;
     [SerializeField] private GameObject groundPrefab;
-    [SerializeField] private GameObject WallPrefab;
+    [SerializeField] private GameObject[] Prefab;
     List<GameObject> Chunks = new List<GameObject>();
     private Vector3 oldPos = new Vector3(1,0,1);
 
@@ -34,17 +34,67 @@ public class ChunkGen : MonoBehaviour
         }
     }
 
-    float RNG(float min, float max)
-    {
-        return Random.Range(min, max);
-    }
-
     void CreateChunk(Vector3 Pos)
     {
         if (CheckChunk(Pos))
         {
+            Vector3[] instans = new Vector3[Prefab.Length];
+            for (int i = 0; i < instans.Length; i++)
+            {
+                instans[i] = new Vector3(0, 0, 0);
+            }
             Chunks.Add(Instantiate(groundPrefab, Pos, Quaternion.identity, this.transform));
-            Instantiate(WallPrefab, Chunks[Chunks.Count - 1].transform.position + new Vector3(RNG(-10, 10), 0, RNG(-10, 10)), Quaternion.identity, Chunks[Chunks.Count - 1].transform);
+            //Instantiate(Prefab[0], Chunks[Chunks.Count - 1].transform.position + new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, Chunks[Chunks.Count - 1].transform);
+
+            for (int i = 0; i < Prefab.Length; i++)
+            {
+
+                Vector3 NewPos = new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f));
+                if (i == 0)
+                {
+                    GameObject a = Instantiate(Prefab[i], Chunks[Chunks.Count - 1].transform.position + NewPos, Quaternion.identity, Chunks[Chunks.Count - 1].transform);
+                    instans[i] = a.transform.position;
+                }
+                else
+                {
+                    if (Vector3.Distance(instans[i], NewPos) > 2)
+                    {
+                        GameObject a = Instantiate(Prefab[i], Chunks[Chunks.Count - 1].transform.position + NewPos, Quaternion.identity, Chunks[Chunks.Count - 1].transform);
+                        instans[i] = a.transform.position;
+                    }
+                }
+
+            }
+            /*
+            for (int i = 0; i < Prefab.Length; i++)
+            {
+                Vector3 NewPos = new Vector3(Random.Range(-4.5f, 4.5f), 0, Random.Range(-4.5f, 4.5f));
+                if (Chunks[Chunks.Count - 1].transform.childCount != 0)
+                {
+                    for (int ii = 0; ii < Chunks[Chunks.Count - 1].transform.childCount; ii++)
+                    {
+                        try
+                        {
+                            if (Vector3.Distance(instans[ii], NewPos) > 2)
+                            {
+                                Instantiate(Prefab[i], Chunks[Chunks.Count - 1].transform.position + NewPos, Quaternion.identity, Chunks[Chunks.Count - 1].transform);
+                            }
+
+                        }
+                        catch (System.Exception e)
+                        {
+                            print(e);
+                            throw;
+                        }
+                    }
+                }
+                else
+                {
+                    var a = Instantiate(Prefab[i], Chunks[Chunks.Count - 1].transform.position + NewPos, Quaternion.identity, Chunks[Chunks.Count - 1].transform);
+                    instans[0] = a.transform.position;
+                }
+            }
+            */
         }
     }
 

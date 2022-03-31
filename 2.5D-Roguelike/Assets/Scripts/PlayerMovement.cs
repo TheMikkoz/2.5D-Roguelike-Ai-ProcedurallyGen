@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = 0;
 
     private float cd;
+    [SerializeField] private float Degree = 90;
 
     private void Start()
     {
@@ -26,10 +27,10 @@ public class PlayerMovement : MonoBehaviour
     //Inputs from player
     private void PlayerInputs()
     {
-        if (cd > 1f)
+        if (cd > 0.5f)
         {
-            if (Input.GetButton("RotateR")) PlrRotate(90);
-            else if (Input.GetButton("RotateL")) PlrRotate(-90);
+            if (Input.GetButton("RotateR")) PlrRotate(Degree);
+            else if (Input.GetButton("RotateL")) PlrRotate(-Degree);
         }
         else
         {
